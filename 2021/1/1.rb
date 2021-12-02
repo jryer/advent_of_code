@@ -1,16 +1,10 @@
 lines = File.readlines('input').map(&:to_i)
 
-first_answer = lines.each_cons(2).count do |num|
-  num[1].to_i > num[0].to_i
+def num_rising_groups(input:, group_size:)
+  input.each_cons(group_size).count{ |a, *, b| b > a }
 end
 
-set_total = nil
-second_answer = 0
-lines.each_cons(3) do |num|
-  before = set_total
-  set_total = num.sum
-  second_answer = second_answer+1 if before&&set_total>before
-end
+lines = File.readlines('input').map(&:to_i)
+result = [2, 4].map { |n| num_rising_groups(input: lines, group_size: n) }
 
-puts first_answer
-puts second_answer
+puts result
