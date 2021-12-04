@@ -1,3 +1,4 @@
+# Rough solution written quickly
 lines = File.readlines('input').map(&:to_s)
 # #lines = ['forward 5','down 5','forward 8',' up 3','down 8','forward 2']
 
@@ -12,8 +13,6 @@ lines.each do |line|
   elsif command=='down'
     y += number.to_i
   end
-
-
 end
 
 puts x*y

@@ -2,19 +2,20 @@ lines = File.readlines('input').map{|x| x.to_s.strip}
 
 total_lines = lines.size
 num_bits = lines.first.size
-output = Array.new(num_bits)
+
+sum_of_bits = Array.new(num_bits)
 
 lines.each.with_index do |line|
     chars = line.strip.split('')
     chars.each_with_index do |x, j| 
-        output[j] ||= 0
-        output[j] += x.to_i
+        sum_of_bits[j] ||= 0
+        sum_of_bits[j] += x.to_i
     end
 end
 
 gamma = ''
 episilon = ''
-output.each do |i|
+sum_of_bits.each do |i|
     num = (i.to_f / total_lines).round
     gamma += num.to_s
     episilon += (1 - num).to_s
@@ -23,9 +24,9 @@ puts gamma.to_i(2) *  episilon.to_i(2)
 
 ####
 
-bit = 0
 oxy = lines.clone
 co2 = lines.clone
+bit = 0
 while bit < num_bits
     avg_oxy = oxy.sum{ |x| x[bit].to_i }.to_f / oxy.size
     avg_co2 = co2.sum{ |x| x[bit].to_i }.to_f / co2.size

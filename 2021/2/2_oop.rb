@@ -1,3 +1,4 @@
+#Rewrote using OOP jus for fun
 class Submarine
     def self.run(directions)
         new(directions).run

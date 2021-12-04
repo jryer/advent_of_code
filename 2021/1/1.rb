@@ -1,3 +1,5 @@
+# Refactored solution after submission to be generalized for both parts
+
 lines = File.readlines('input').map(&:to_i)
 
 def num_rising_groups(input:, group_size:)
